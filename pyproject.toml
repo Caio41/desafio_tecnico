@@ -1,0 +1,32 @@
+[project]
+name = "desafio-tecnico-pge"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Caio",email = "caiaoviniciuscc@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "sqlmodel (>=0.0.24,<0.0.25)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "fastapi (>=0.115.11,<0.116.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "psycopg[binary] (>=3.2.6,<4.0.0)",
+    "ucimlrepo (>=0.0.7,<0.0.8)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "plotly (>=6.0.0,<7.0.0)",
+    "kaleido (==0.2.1)",
+    "scikit-learn (>=1.6.1,<2.0.0)",
+    
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+package-mode = false
