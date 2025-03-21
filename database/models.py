@@ -93,14 +93,17 @@ class DocumentoPublic(DocumentoBase):
     processo: "Processo"
 
 
-class Distribuicao(SQLModel, table=True):
+class DistribuicaoBase(SQLModel):
+    data_mudanca: date
+
+
+class Distribuicao(DistribuicaoBase, table=True):
     __tablename__ = "distribuicao"
 
     id: int | None = Field(default=None, primary_key=True)
     processo_id: int = Field(foreign_key="processo.id")
     procurador_antigo_id: int = Field(foreign_key="procurador.id")
     procurador_novo_id: int = Field(foreign_key="procurador.id")
-    data_mudanca: date
 
     processo: "Processo" = Relationship(back_populates="distribuicoes")
     procurador_antigo: "Procurador" = Relationship(
@@ -109,6 +112,12 @@ class Distribuicao(SQLModel, table=True):
     procurador_novo: "Procurador" = Relationship(
         sa_relationship_kwargs={"foreign_keys": "[Distribuicao.procurador_novo_id]"}
     )
+
+
+class DistribuicaoPublic(DistribuicaoBase):
+    processo: 'Processo'
+    procurador_antigo: 'Procurador'
+    procurador_novo: 'Procurador'
 
 
 class Pessoa(SQLModel):

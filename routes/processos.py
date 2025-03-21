@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException
 from sqlmodel import select
 
 
-from database.models import Distribuicao, Processo, ProcessoCreate, ProcessoPublic, Procurador
+from database.models import Distribuicao, DistribuicaoPublic, Processo, ProcessoCreate, ProcessoPublic, Procurador
 from deps import SessionDep
 
 
@@ -31,7 +31,9 @@ def add_processo(processo_create: ProcessoCreate, db: SessionDep) -> ProcessoPub
 
 
 @router.put('/')
-def modificar_procurador_processo(processo_id: int, procurador_id: int, db: SessionDep):
+def modificar_procurador_processo(processo_id: int, procurador_id: int, db: SessionDep) -> DistribuicaoPublic:
+    '''Essa rota foi feita para exemplificar o caso onde é necessário fazer a distribuição de um processo
+       de um procurador para o outro'''
     processo = db.exec(select(Processo).where(Processo.id==processo_id)).first()
     
     if not processo:
@@ -45,9 +47,10 @@ def modificar_procurador_processo(processo_id: int, procurador_id: int, db: Sess
         processo=processo,
         procurador_antigo=antigo_procurador,
         procurador_novo=novo_procurador,
-        data_mudanca=datetime.now().date()
+        data_mudanca=datetime.now().date(),
     )
 
     db.add(nova_distribuicao)
     db.add(processo)
     db.commit()
+    return nova_distribuicao
