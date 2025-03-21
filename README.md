@@ -15,6 +15,20 @@ Para o pip, faça:
 ```sh
 pip install -r requirements.txt
 ```
+
+# Uso
+Para executar a solução, primeiramente é necessário criar um arquivo .env e adicionar a variável:
+```env
+DATABASE_URL=postgresql+psycopg://USUARIO:SENHA@localhost/NOME_BANCO
+```
+Com o 'USUARIO', 'SENHA' e 'NOME_BANCO' adequados.
+
+Tendo configurado esse arquivo, basta utilizar:
+```sh
+uvicorn main:app
+```
+Isso irá criar e popular o banco de dados no URL informado.
+
 # Entregáveis
 ## Modelo de banco de dados
 O esquema SQL do banco pode ser encontrado em `database/schema.sql`, gerado
@@ -23,17 +37,8 @@ junto de alguns dados ficticios. Também incluí um script de inicialização do
     
 Além disso, fiz uma API simples para que seja possível interagir com esse banco, com rotas para inserção e visualização dos dados.
 
-Para ter acesso a essa API, primeiro é necessário criar um arquivo .env e adicionar essa variável:
-```env
-DATABASE_URL=postgresql+psycopg://USUARIO:SENHA@localhost/NOME_BANCO
-```
-Com o 'USUARIO', 'SENHA' e 'NOME_BANCO' adequados.
+Para ter acesso a essa API, basta seguir as instruções detalhadas em 'Uso' e depois acessar http://127.0.0.1:8000/docs
 
-Com isso feito, basta utilizar:
-```sh
-uvicorn main:app
-```
-e acessar http://127.0.0.1:8000/docs
 
 
 ## Análise de dados
