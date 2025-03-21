@@ -173,6 +173,6 @@ knn.fit(X_iris_treinamento, y_iris_treinamento)
 previsoes = knn.predict(X_iris_teste)
 
 # Métricas
-print(accuracy_score(y_iris_teste,previsoes))
-print(confusion_matrix(y_iris_teste, previsoes))
-print(classification_report(y_iris_teste, previsoes))
+# print(accuracy_score(y_iris_teste,previsoes))
+# print(confusion_matrix(y_iris_teste, previsoes))
+# print(classification_report(y_iris_teste, previsoes))
