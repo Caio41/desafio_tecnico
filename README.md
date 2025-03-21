@@ -40,4 +40,5 @@ e acessar http://127.0.0.1:8000/docs
 Todo código referente à essa seção se encontra na pasta `analysis`, que também contém um arquivo README.md com uma explicação detalhada do que foi feito.
 
 ## Documentação
-O diagrama de classes pode ser encontrado na pasta docs, com uma explicação mais detalhada da modelagem.
+#### Diagrama de Classes
+![image](https://github.com/user-attachments/assets/5f7ff388-c251-4d94-8103-3374323ed2bc)
