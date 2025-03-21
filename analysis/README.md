@@ -35,7 +35,7 @@ medidas = df_limpo.describe()
 
 Para adicionar a moda em `medidas`, usei:
 ```py
-medidas.loc[`mode`] = df_limpo.mode().iloc[0]
+medidas.loc['mode'] = df_limpo.mode().iloc[0]
 ```
 
 Por fim, removi as outras informações, mantendo apenas a média, mediana e moda:
@@ -54,13 +54,13 @@ mode      5.000000     3.000000      1.400000     0.200000      (Moda)
 OBS: Também é possível obter essas medidas separadamente utilizando:
 ```py
 # Média
-print(f`Média: \n{df_limpo.drop(columns=["class"]).mean()}`)
+print(f'Média: \n{df_limpo.drop(columns=["class"]).mean()}')
 
 # Mediana
-print(f`Mediana: \n{df_limpo.drop(columns=["class"]).median()}`)
+print(f'Mediana: \n{df_limpo.drop(columns=["class"]).median()}')
 
 # Moda
-print(f`Moda: \n{df_limpo.mode().iloc[0]}`)
+print(f'Moda: \n{df_limpo.mode().iloc[0]}')
 ```
 
 Com esses números em mãos, podemos tirar algumas conclusões:
@@ -80,7 +80,7 @@ Por fim, em `petal width` podemos perceber valores próximos na média (1.2) e m
 
 Para encontrar as espécies e suas quantidades eu utilizei:
 ```py
-print(df_limpo[`class`].value_counts())
+print(df_limpo['class'].value_counts())
 ```
 ```sh
 class
@@ -108,7 +108,7 @@ Iris-virginica       6.604082     2.979592      5.561224     2.028571
 ```
 ```py
 # Mediana
-print(df_limpo.groupby(`class`).median())
+print(df_limpo.groupby('class').median())
 ```
 ```sh
                  sepal length  sepal width  petal length  petal width
@@ -119,7 +119,7 @@ Iris-virginica            6.5          3.0          5.60          2.0
 ```
 ```py
 # Moda
-print(df_limpo.groupby(`class`).agg(lambda x: pd.Series.mode(x)[0]))
+print(df_limpo.groupby('class').agg(lambda x: pd.Series.mode(x)[0]))
 ```
 ```sh
                 sepal length  sepal width  petal length  petal width
@@ -189,7 +189,7 @@ Já os valores para Iris-versicolor estão mais distribuídos e possuem uma vari
 Por último, os valores para `sepal length` da Iris-virginica também são relativamente bem distribuídos, se concentrando mais em valores maiores (>5.6). Contudo, podemos observar a presença de um potencial outlier isolado, com um valor menor que o comum para a espécie.
 
 ```py
-gerar_hist_por_classe(df_limpo,`sepal width`)
+gerar_hist_por_classe(df_limpo,'sepal width')
 ```
 ![image](https://github.com/user-attachments/assets/53441470-8807-4ef4-995f-6eb3449140f4)
 
@@ -201,7 +201,7 @@ Já no histograma da Iris-versicolor, vemos uma distribuição levemente assimé
 Por fim, na Iris-virginica podemos observar uma maior concentração no meio do gráfico, sugerindo o tamanho médio para o `sepal width` dessa espécie. Além disso, também podemos observar alguns valores distoando tanto pra cima (>3.5) quanto pra baixo(<2.5)
 
 ```py
-gerar_hist_por_classe(df_limpo,`petal length`)
+gerar_hist_por_classe(df_limpo,'petal length')
 ```
 ![image](https://github.com/user-attachments/assets/84a3c7bf-00d4-484b-839b-35fd80a58cc5)
 
@@ -213,7 +213,7 @@ Por outro lado, as flores da espécie Iris-versicolor se concentram no meio do g
 Já as Iris-virginica se encontram na parte mais à direita do gráfico, possuindo valores mais altos para `petal length`.
 
 ```py
-gerar_hist_por_classe(df_limpo,`petal width`)
+gerar_hist_por_classe(df_limpo,'petal width')
 ```
 ![image](https://github.com/user-attachments/assets/d44a1080-ef24-42d4-b8bf-1d554dad209d)
 
